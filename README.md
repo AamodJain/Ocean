@@ -46,7 +46,19 @@ else :
     print(s, "is not a palindrome ")
 
 # ocean_16
+s = input("Enter a string :")
+vowels = 'aeiou' #storing all vowels in a string
+consonants = 'bcdfghjklmnpqrstvwxyz' # storing all consonants in a string
+vowel_count , consonant_count = 0,0
 
+for i in s: # checking each element of s for vowel/consonant
+    if i.lower() in vowels:
+        vowel_count+=1
+    elif i.lower() in consonants:
+        consonant_count+=1
+
+print(f"The number of vowels in the string is : {vowel_count}")
+print(f"The number of consonants in the string is : {consonant_count}")
 
 
 
