@@ -14,3 +14,9 @@ for i in range(2,n+1):
     prime(i)
 
 # ocean_12 
+# taking 2 input strings from user
+s1 = input("Enter first string ;")
+s2 = input("Enter second string ;")
+
+print(s1+s2)
+
