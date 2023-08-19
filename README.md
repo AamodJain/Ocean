@@ -34,6 +34,11 @@ for i in range(n):  #interspersing the second string onto the first one
 print(ans)
 
 #ocean_14
+s = input("Enter a string :")
+
+print(s[::-1]) #using string slice to reverse the input string
+
+#ocean_15
 
 
 
