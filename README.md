@@ -70,7 +70,7 @@ for i in range(1,n+1): # printing the square of all the numbers from 1-n
 n = int(input("Enter a number :")) #taking value of n from user
 a = 0
 b = 1
-print("The first {n} terms of Fibonacci sequence are :- ")
+print(f"The first {n} terms of Fibonacci sequence are :- ")
 # printing the first 2 terms 
 print(a, end= ' ')
 print(b, end= ' ')
@@ -81,6 +81,11 @@ for i in range(n-2):
     a = b
     b = nextTerm
     print(nextTerm , end = ' ')
+
+# ocean_19
+n = int(input("Enter a number :")) #taking value of n from user
+for i in range(n):  # varying i from 0 to n-1
+    print((i+1)*"*") #printing (i+1) stars in the 'i'th row
 
 
 
