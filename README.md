@@ -67,6 +67,20 @@ for i in range(1,n+1): # printing the square of all the numbers from 1-n
     print(i**2)
 
 # ocean_18
+n = int(input("Enter a number :")) #taking value of n from user
+a = 0
+b = 1
+print("The first {n} terms of Fibonacci sequence are :- ")
+# printing the first 2 terms 
+print(a, end= ' ')
+print(b, end= ' ')
+
+# printing rest of the terms
+for i in range(n-2):
+    nextTerm = a+b
+    a = b
+    b = nextTerm
+    print(nextTerm , end = ' ')
 
 
 
