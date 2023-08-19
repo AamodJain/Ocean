@@ -39,6 +39,15 @@ s = input("Enter a string :")
 print(s[::-1]) #using string slice to reverse the input string
 
 #ocean_15
+s = input("Enter a string :")
+if s == s[::-1]: #compairing s and its reverse string 
+    print(s, "is a palindrome ")
+else :
+    print(s, "is not a palindrome ")
+
+# ocean_16
+
+
 
 
 
