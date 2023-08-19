@@ -99,6 +99,15 @@ def fact(n):
 n = int(input('Enter a number :'))
 print(f'The factorial of {n} is : {fact(n)}')
 
+# ocean_22
+n = int(input('Enter a number :'))
+if n>0: # if n>0 then it is +ve
+    print(f'{n} is Positive')
+elif n<0: # if n,0 then it is -ve
+    print(f'{n} is Negative')
+else : # if n=0 then it is Zero
+    print(f'{n} is Zero')
+
 
 
 
