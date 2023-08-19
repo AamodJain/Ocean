@@ -60,6 +60,15 @@ for i in s: # checking each element of s for vowel/consonant
 print(f"The number of vowels in the string is : {vowel_count}")
 print(f"The number of consonants in the string is : {consonant_count}")
 
+# ocean_17
+n = int(input("Enter a number :")) #taking value of n from user
+print("squares of all the number from 1 to n are :-")
+for i in range(1,n+1): # printing the square of all the numbers from 1-n
+    print(i**2)
+
+# ocean_18
+
+
 
 
 
