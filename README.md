@@ -269,6 +269,24 @@ for i in range(10**(k-1),10**k):
 print(f'required pair = {ans}')
 print(f'number of steps = {max}')
 
+# ocean_30_maxSteps_Advanced 
+k = int(input('Enter the value of k :')) # taking the value of k from the user
+l = [0,1] # creating a list with the first 2 terms of fibonacci sequence
+a =0
+b=1
+nextTerm = 0
+# the required pair of numbers will be the two largest k-digit numbers in the Fibonacci Sequence
+while nextTerm<= 10**k: # appending all the terms less than or equal to the largest k-digit term in the fibonacci sequence in the list l
+    nextTerm= a+b
+    a = b
+    b = nextTerm
+    if nextTerm<= 10**k:
+        l.append(nextTerm)
+
+print(f'The required pair is ({l[-1]},{l[-2]})') # the two largest terms from the list l form the required pair
+
+# ocean_31
+
 
 
 
