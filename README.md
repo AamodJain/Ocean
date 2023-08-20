@@ -379,4 +379,12 @@ b = input()
 print(concatenate(a,b)) # calling the concatenate function and printing the output
 
 # ocean_42
+def find_max_1(l): # creating the find_max function
+    max = l[0] # assuming l[0] to be the maximum in the list 
+    for i in l:
+        if i>max: 
+            max = i # updating max if a number greater than max is found in the list
+    return max
 
+def find_max_2(l): # creating another function that does the same thing as find_max_1
+    return max(l)
