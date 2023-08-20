@@ -245,7 +245,29 @@ print(f'gcd({b},{a%b})')
 gcd(a,b) # calling the gcd function 
 
 # ocean_30_maxSteps_Basic
+def gcd(a,b):
+    global count
+    if b>a:
+        a,b=b,a
+    if b==0:
+        count+=1
+    else :
+        count+=1
+        return gcd(b,a%b)
+    
+k = int(input('Enter the value of k :'))
+max =0
+ans = ()
+for i in range(10**(k-1),10**k):
+    for j in range(i+1,10**k):
+        count = 0
+        gcd(i,j)
+        if count>max :
+            max = count
+            ans = (i,j)
 
+print(f'required pair = {ans}')
+print(f'number of steps = {max}')
 
 
 
