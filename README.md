@@ -330,5 +330,22 @@ def fibonacci(n): # creating fibonacci function
 n = int(input('Enter the value of n :')) # taking n as input from user
 print(f'The {n}th term of Fibonacci sequence is {fibonacci(n)}')
 
+# ocean_36
 
+# ocean_37 
+
+# ocean_38
+def is_even(n): # creating is_even function
+    if n%2==0: # checking if n is even or odd
+        return True
+    return False
+
+n = int(input('Enter a number :')) # taking n from user as input
+if is_even(n): # calling is_even function
+    print(n, 'is even')
+
+else :
+    print(n, 'is odd')
+
+# ocean_39
 
