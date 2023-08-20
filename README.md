@@ -226,7 +226,27 @@ while (n):
 
 print(ans)
 
-#ocean_30
+# ocean_30 
+
+# ocean_30_GCD
+def gcd(a,b): # creating a function to calculate the gcd of two numbers 
+    if b>a: # b should be smaller than a for the euclid's algorithm to work
+        a,b=b,a
+    if b==0: # if b = o , then a will be the gcd
+        print(f'gcd = {a}')
+    else :
+        print(f'gcd({b},{a%b})') # using euclid's algorithm : gcd(a,b)=gcd(b,a%b)
+        return gcd(b,a%b)
+
+# asking user for the 2 numbers whose gcd is required
+a = int(input('Enter first number :'))
+b = int(input('Enter second number :'))
+print(f'gcd({b},{a%b})')
+gcd(a,b) # calling the gcd function 
+
+# ocean_30_maxSteps_Basic
+
+
 
 
 
