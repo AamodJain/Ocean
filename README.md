@@ -296,6 +296,13 @@ n = random.randint(10,100) # choosing a random number as the length of the list
 L = [random.randint(1,1000) for i in range(n)] # creating a list L with random numbers in the range 1-1000
 print(L)
 
+#ocean_33
+def add(a,b): # creating function add
+    return a+b
+# taking two numbers as input from the user
+a = int(input('Enter first number :'))
+b = int(input('Enter second number :'))
+print(add(a,b)) # calling the add function
 
 
 
