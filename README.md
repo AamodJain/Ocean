@@ -348,4 +348,9 @@ else :
     print(n, 'is odd')
 
 # ocean_39
+def circle_area(r): # creating circle_area function
+    import math # importing math module
+    return math.pi*(r**2) # calculating and returning the area of circle
+
+# ocean_40
 
