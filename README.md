@@ -137,6 +137,50 @@ t = float(input("Enter the value of time :"))
 print(f"The simple interest for the given set of principal ,rate and time is : {(p*r*t)/100}")
 
 # ocean_24
+print('Choose conversion type :-\nCelcius to Fahrenheit (Enter 1)\nFahrenheit to Celcius (Enter 2) ')
+s = int(input("Enter your choice :")) # asking user's choice 
+if s == 1 : # converting Celcius to Fahrenheit
+    c = float(input('Enter the temperature in Celcius :'))
+    f = (9/5)*c+32
+    print(f"{c} Celcius = {f} Fahrenheit")
+elif s == 2: # converting Fahrenheit to Celcius
+    f = float(input('Enter the temperature in Fahrenheit:'))
+    c = (f-32)*(5/9)
+    print(f"{f} Fahrenheit = {c} Celcius")
+else : # displaying a message asking user to enter a valid choice in case an invalid choice is entered
+    print('Please enter a valid choice ')
+
+# ocean_25 
+n = int(input("Enter the year :")) # taking year as input from the user
+# checking all the necessary conditions for an year to be a leap year
+if n%4==0:
+    if n%100==0:
+        if n%400==0:
+            print(n,'is a Leap Year')
+        else : 
+            print(n,'is not a Leap Year')
+    else :
+        print(n,'is a Leap Year')
+else :
+    print(n,'is not a Leap Year')
+
+# ocean_26
+# divisibility by 7 and 5
+n = int(input('Enter a number :'))
+if n%(7*5)==0: #checking divisibility by 7 and 5
+    print(n,'is divisible by both 7 and 5')
+else :
+    print(n,'is not divisible by both 7 and 5')
+
+# generalisation for a and b
+a = int(input("Enter the value of a :"))
+b = int(input("Enter the value of b :"))
+if n%(a*b)==0: #checking divisibility by a and b entered by the user
+    print(n,f'is divisible by both {a} and {b}')
+else :
+    print(n,f'is not divisible by both {a} and {b}')
+
+#ocean_27
 
 
 
