@@ -245,25 +245,25 @@ print(f'gcd({b},{a%b})')
 gcd(a,b) # calling the gcd function 
 
 # ocean_30_maxSteps_Basic
-def gcd(a,b):
-    global count
-    if b>a:
+def gcd(a,b): # creating a function to calculate the gcd of two numbers 
+    global stepCount
+    if b>a: # b should be smaller than a for the euclid's algorithm to work
         a,b=b,a
-    if b==0:
-        count+=1
+    if b==0: # if b = o , then a will be the gcd and thus the gcd algorithm will end
+        stepCount+=1 # incrementing the stepCount by 1 for each step
     else :
-        count+=1
-        return gcd(b,a%b)
+        stepCount+=1 # incrementing the stepCount by 1 for each step
+        return gcd(b,a%b) # using euclid's algorithm : gcd(a,b)=gcd(b,a%b)
     
-k = int(input('Enter the value of k :'))
+k = int(input('Enter the value of k :')) # taking the value of k from the user
 max =0
-ans = ()
+ans = () # creating an empty tuple to store the required pair 
 for i in range(10**(k-1),10**k):
     for j in range(i+1,10**k):
-        count = 0
+        stepCount = 0 
         gcd(i,j)
-        if count>max :
-            max = count
+        if stepCount>max : # updating max and ans if stepCount for a pair exceeds the previous maximum value
+            max = stepCount
             ans = (i,j)
 
 print(f'required pair = {ans}')
@@ -286,7 +286,11 @@ while nextTerm<= 10**k: # appending all the terms less than or equal to the larg
 print(f'The required pair is ({l[-1]},{l[-2]})') # the two largest terms from the list l form the required pair
 
 # ocean_31
+n = int(input('Enter the value of n :')) # taking the value of n from user 
+L = [i for i in range(1,n+1)] # creating a list L containing the first n natural numbers
+print(L)
 
+# ocean_32
 
 
 
