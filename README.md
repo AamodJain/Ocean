@@ -214,6 +214,19 @@ else :
     print('F Grade')
 
 #ocean_29
+n = int(input('Enter a decimal number: ')) #taking a decimal number as input from the user
+ans = 0
+i=0
+print(f'binary representation of {n} is ', end = '')
+while (n):
+    bit = n&1 #finding the last bit in the binary representation of n 
+    ans = (10**i)*bit + ans # using the bit obtained to form the binary representation of n
+    i+=1 # incrementing i by 1
+    n = n>>1 # using right shift operator in order to find the next bit 
+
+print(ans)
+
+#ocean_30
 
 
 
