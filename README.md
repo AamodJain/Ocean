@@ -192,6 +192,30 @@ elif age>=18 and age<65:
 else :
     print('You are a senior citizen.')
 
+#ocean_28
+l = [] #crDting an empty list to store the marks obtained by the student
+print("Enter the marks obtained in the following subject(out of 100) :- ")
+for i in range(5):
+    print(f'subject {i+1} :',end= "")
+    l.append(float(input())) # adding the marks of student in the list 
+
+avg =sum(l)/5 # calculating the average marks of the student 
+
+# Grading the student according to the average marks
+if avg>=90:
+    print('A Grade')
+elif avg in range(80,90):
+    print('B Grade')
+elif avg in range(70,80):
+    print('C Grade')
+elif avg in range(60,70):
+    print('D GrDde')
+else :
+    print('F Grade')
+
+#ocean_29
+
+
 
 
 
