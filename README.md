@@ -313,8 +313,22 @@ n = int(input('Enter a number : ')) # taking n as input from the user
 factorial(n) # calling factorial function
 
 # ocean_35
+def fibonacci(n): # creating fibonacci function
+    a = 0
+    b = 1
+    if n == 1 :
+        return a
+    elif n == 2: 
+        return b
+    else :
+        for i in range(n-2): 
+            nextTerm = a+b # using the definition of fibonacci sequence to find the nth term 
+            a = b 
+            b= nextTerm
+        return nextTerm
 
-print(add(a,b)) # calling the add function
+n = int(input('Enter the value of n :')) # taking n as input from user
+print(f'The {n}th term of Fibonacci sequence is {fibonacci(n)}')
 
 
 
