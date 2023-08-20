@@ -181,7 +181,16 @@ else :
     print(n,f'is not divisible by both {a} and {b}')
 
 #ocean_27
+age = int(input('Enter your age :')) # taking age as input from user
+# checking what group does the age entered by the user belongs to and displayig the message accordingly
+if age<18: 
+    print('You are a minor.')
 
+elif age>=18 and age<65:
+    print('You are an adult.')
+
+else :
+    print('You are a senior citizen.')
 
 
 
