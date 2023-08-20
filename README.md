@@ -291,7 +291,10 @@ L = [i for i in range(1,n+1)] # creating a list L containing the first n natural
 print(L)
 
 # ocean_32
-
+import random # importing random module
+n = random.randint(10,100) # choosing a random number as the length of the list
+L = [random.randint(1,1000) for i in range(n)] # creating a list L with random numbers in the range 1-1000
+print(L)
 
 
 
