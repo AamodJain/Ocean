@@ -371,4 +371,12 @@ while(termCount<=1000000):
     i+=1 # incrementing i
 
 # ocean_41
+def concatenate(s1,s2): # creating the function concatenate
+    return ' '.join([s1,s2]) # returning the concatenated string
+print('enter 2 strings') # taking 2 strings as input from the user 
+a = input()
+b = input()
+print(concatenate(a,b)) # calling the concatenate function and printing the output
+
+# ocean_42
 
