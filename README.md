@@ -302,6 +302,18 @@ def add(a,b): # creating function add
 # taking two numbers as input from the user
 a = int(input('Enter first number :'))
 b = int(input('Enter second number :'))
+
+# ocean_34
+def factorial(n): # creating the function factorial
+    if n ==0 or n==1 : # factorial(0) = factorial(1) = 1
+        return 1 
+    return n*factorial(n-1) # using factorial(n) = n*factorial(n-1)
+
+n = int(input('Enter a number : ')) # taking n as input from the user
+factorial(n) # calling factorial function
+
+# ocean_35
+
 print(add(a,b)) # calling the add function
 
 
