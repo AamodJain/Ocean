@@ -331,6 +331,14 @@ n = int(input('Enter the value of n :')) # taking n as input from user
 print(f'The {n}th term of Fibonacci sequence is {fibonacci(n)}')
 
 # ocean_36
+import random # imorting random module
+n = 1000000 # assuming n = 1M
+l = [0 for i in range(n)] # initiating a list of length n with all elements as 0. each index in l represents an empty bin.
+# simulating the process of throwing n identical balls randomly into n bins
+for j in range(n):
+    l[random.randint(0,999999)]+=1 # incrementing the value of a bin (value stored at that index) whenever a ball lands in it.
+
+print(max(l)) # printing the maximum across all bins 
 
 # ocean_37 
 
