@@ -362,22 +362,17 @@ def circle_area(r): # creating circle_area function
 
 # ocean_40
 def miniSpiral(n): # creating the function miniSpiral to produce the desired pattern
-    global oc,ans
-    ans+=(order[oc]*n) # printing the pattern , one unit at a time # considering continuous string of a single letter a one unit
-    oc+=1 # incrementing oc after printing one unit of the pattern
-    ans+=(order[oc]*n)
+    global oc,ans # using global keyword to ensure that oc and ans from the global namespace get updated
+    ans+=(order[oc%4]*n) # storing the pattern in ans, one unit at a time # considering continuous string of a single letter a one unit
+    oc+=1 # incrementing oc after storing one unit of the pattern
+    ans+=(order[oc%4]*n) # repeating the same process for the second unit
     oc+=1 
-oc = 0 # creating a variable oc to hold the current index(where printing occurs) in the string order
+oc = 0 # creating a variable oc to hold the current index(where storing occurs) in the string order
 ans = '' # creating an empty string to hold the pattern 
 order = "RULD" # defining the order as Right->Up->Left->Down
-i =1 # creating a variable i, to hold the number of times a letter has to be printed
 termCount=0 # creating a variable to count the number of terms printed
-while(termCount<=1000000):
-    if(oc==4):
-        oc=0
+for i in range(1,1001): # using the loop variable i, to denote the number of times a letter has to be repeated in a unit
     miniSpiral(i) # calling the miniSpiral function
-    termCount+=2*i # incrementing termCount
-    i+=1 # incrementing i
 
 print(ans[0:1000000]) #printing the required number of terms from the pattern
 
