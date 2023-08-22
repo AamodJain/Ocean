@@ -362,12 +362,13 @@ def circle_area(r): # creating circle_area function
 
 # ocean_40
 def miniSpiral(n): # creating the function miniSpiral to produce the desired pattern
-    global oc
-    print(order[oc]*n,end="") # printing the pattern , one unit at a time # considering continuous string of a single letter a one unit
+    global oc,ans
+    ans+=(order[oc]*n) # printing the pattern , one unit at a time # considering continuous string of a single letter a one unit
     oc+=1 # incrementing oc after printing one unit of the pattern
-    print(order[oc]*n,end="")
+    ans+=(order[oc]*n)
     oc+=1 
 oc = 0 # creating a variable oc to hold the current index(where printing occurs) in the string order
+ans = '' # creating an empty string to hold the pattern 
 order = "RULD" # defining the order as Right->Up->Left->Down
 i =1 # creating a variable i, to hold the number of times a letter has to be printed
 termCount=0 # creating a variable to count the number of terms printed
@@ -377,6 +378,8 @@ while(termCount<=1000000):
     miniSpiral(i) # calling the miniSpiral function
     termCount+=2*i # incrementing termCount
     i+=1 # incrementing i
+
+print(ans[0:1000000]) #printing the required number of terms from the pattern
 
 # ocean_41
 def concatenate(s1,s2): # creating the function concatenate
