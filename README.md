@@ -394,3 +394,48 @@ def find_max_1(l): # creating the find_max function
 
 def find_max_2(l): # creating another function that does the same thing as find_max_1
     return max(l)
+
+# ocean_43
+
+# ocean_44
+
+# ocean_45
+
+# ocean_46
+def matrixSum(): # creating a function to calculate the sum of the 2 matrices
+    # taking 2 square matrices as input from the user 
+    print("Enter 2 square matrices of the same order : ")
+    a = eval(input())
+    b = eval(input())
+    n = len(a) # storing the order of the matrix in a variable n
+    ans = [[] for i in range(n)] # creating a list 'ans' of the same order to hold the sum of a and b
+    for i in range(n): # iterating through each row
+        for j in range(n): # iterating through each column
+            ans[i].append(a[i][j]+b[i][j]) # appending the value of each element of the sum matrix in ans
+    return ans # returning the ans
+
+print(matrixSum())
+
+# ocean_47
+def matrixProduct(): # creating the function 'matrixProduct' to calculate the product of two square matrices 
+    # taking two matrices as input from the user
+    print("Enter two square matrices : ")
+    l1 = eval(input())
+    l2 = eval(input())
+    n = len(l1) # storing the order of matrix in a variable 'n'
+    product_matrix = [[0 for i in range(n)] for x in range(n)] # creating a list to hold the product 
+
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                product_matrix[i][j]+=l1[i][k]*l2[k][j] # adding the value of each element of the product_matrix
+
+
+    return product_matrix # returning the producht_matrix
+
+print(matrixProduct()) # calling the fuction created 
+
+# ocean_48
+
+
+
