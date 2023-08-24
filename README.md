@@ -1,4 +1,4 @@
-# Ocean
+d# Ocean
 This repository contains my solutions to the oceanverse problems .
 
 # ocean_11
@@ -341,6 +341,18 @@ for j in range(n):
 print(max(l)) # printing the maximum across all bins 
 
 # ocean_37 
+def balls():
+    import random # imorting random module
+    n = int(input("Enter the number of bins :")) # taking the number of bins as an input from the user
+    l = [0 for i in range(n)] # initiating a list of length n with all elements as 0. each index in l represents an empty bin.
+    count = 0 # creating a variable count to hold the value of the number of balls required
+    # simulating the process of throwing balls in n bins until none of the bins remains empty
+    while l.count(0)!=0:
+        l[random.randint(0,n-1)]+=1 # ball gets in a random bin
+        count+=1 # incrementing the value of count after every throw 
+    return count # returning the number of balls required
+
+print(balls()) # calling the function 'balls'
 
 # ocean_38
 def is_even(n): # creating is_even function
