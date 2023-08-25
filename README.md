@@ -429,23 +429,24 @@ def matrixSum(): # creating a function to calculate the sum of the 2 matrices
 print(matrixSum())
 
 # ocean_47
-def matrixProduct(): # creating the function 'matrixProduct' to calculate the product of two square matrices 
-    # taking two matrices as input from the user
+def matrixProduct(): # creating a function to calculate the product of 2 given matrices
+    # taking 2 square matrices as input from the user
     print("Enter two square matrices : ")
     l1 = eval(input())
     l2 = eval(input())
-    n = len(l1) # storing the order of matrix in a variable 'n'
-    product_matrix = [[0 for i in range(n)] for x in range(n)] # creating a list to hold the product 
+    n = len(l1) # storing the order of these matrices in a variable 'n'
+    product_matrix = [[0 for i in range(n)] for x in range(n)] # intializing a 2D list with all elements as zero to store the product of the matrices
 
+    # using loops to iterate through the elements of matrix represented as 2D lists
     for i in range(n):
         for j in range(n):
             for k in range(n):
-                product_matrix[i][j]+=l1[i][k]*l2[k][j] # adding the value of each element of the product_matrix
+                product_matrix[i][j]+=l1[i][k]*l2[k][j] # calculating and updating the value of each element of the product matrix
 
 
-    return product_matrix # returning the producht_matrix
+    return product_matrix # returning the product matrix
 
-print(matrixProduct()) # calling the fuction created 
+print(matrixProduct()) # calling the matrixProduct function
 
 # ocean_48
 
