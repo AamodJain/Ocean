@@ -449,6 +449,25 @@ def matrixProduct(): # creating a function to calculate the product of 2 given m
 print(matrixProduct()) # calling the matrixProduct function
 
 # ocean_48
+def writeNaturalNumbers(): # creating a function to write the first n natural numbers to the file output.txt
+    n = int(input("Enter the value of n : ")) # taking the value of n from the user
+    with open('output.txt','w') as f: # opening the file output.txt through the file handle f
+        for i in range(1,n+1): 
+            f.write(i+"\n") # writing the first n natural numbers to output.txt
+    f.close() # closing the file 
+
+writeNaturalNumbers() # calling the function output.txt 
+
+# ocean_49 
+def readWrite(): # creating a function to read a file output.txt and print its contents 
+    with open('output.txt','r') as f: # opening the file through file handle f
+        line = ' ' # creating an empty string to hold the contents of the file
+        while(line): # iterating through each line of the file
+            line = f.readline() # reading each line of the file
+            print(line) # printing the line read
+        f.close() # closing the file after printing its contents 
+
+readWrite() # calling the function readWrite created earlier
 
 
 
