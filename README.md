@@ -522,6 +522,31 @@ print("\n")
 SFC(n) #calling the SFC function 
 
 # ocean_51
+# ocean_52
+# ocean_53
+# ocean_54
+# creating a function BinarySeach to search for an element in a sorted array 
+def BinarySearch(arr,key): 
+    start = 0 
+    end = len(arr)-1
+    mid = (start+end)//2
+    while(start<=end):
+        if arr[mid]==key: # returning the index if key is found 
+            return mid
+        elif arr[mid]>key: # updating the value of end if arr[mid] is greater than key as this means that key lies on the right of mid
+            end = mid-1
+        else :
+            start = mid+1 # updating the value of start if arr[mid] is smaller than key as this means that key lies on the left of mid
+        mid = (start+end)//2
+    return -1 # returning -1 if key isn't present in the array
+
+# taking the array and key as input from the user
+arr = eval(input('Enter a sorted array :'))
+key = int(input('Enter the number you want to search in the array :'))
+
+print(BinarySearch(arr,key)) # calling the BinarySearch function
+
+# ocean_55
 
 
 
