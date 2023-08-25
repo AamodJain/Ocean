@@ -469,5 +469,60 @@ def readWrite(): # creating a function to read a file output.txt and print its c
 
 readWrite() # calling the function readWrite created earlier
 
+# ocean_50
+# i have devided the whole pattern in 4 units and have written 4 individual functions to print the completer pattern
+def rotate_1(l): # 1st function to print the top left part # it is the reflection of the pattern for the previous case about the line x=y
+    for i in l :
+        x,y = i
+        ans_list_1.append((y,x)) # appending the mirror image of each point about the line x=y from the previous pattern
+
+def shift_1 (l,n): # 2nd function to print the bottorm right part # it just shifts the pattern for the previous case down by 2**(n-1) units
+    for i in l :
+        x,y = i
+        ans_list_1.append((x+(2**(n-1)),y)) # appending the shifted points in the ans_list_1
+
+def shift_2 (l,n): # 3rd function to print the bottom right part of the pattern # it just shifts the pattern for the previous case down and right by 2**(n-1) units
+    for i in l :
+        x,y = i
+        ans_list_1.append((x+(2**(n-1)),y+(2**(n-1)))) # appending the shifted points in the ans_list_1
+
+def rotate_2(l,n): # 4th function to print the top right part of the pattern # it is the mirror image of the points produced by the function rotate_1 about the line y = 2**n
+    for i in range(4**(n-1)-1,-1,-1):
+        x,y = l[i]
+        y = 2**n -(y-1)
+        ans_list_1.append((x,y)) # appending the required points in the ans_list_1
+
+def SFC(n): # creating a function SFC to call the above defined 4 functions orderly
+    global ans_list_1,l # using global keyword to ensure that the global values of l and ans_list_1 are updated
+    j = 1 
+    # calling the above defined 4 functions according to the user input
+    while j!=n+1:
+        rotate_1(l)
+        if (j==1):
+            j+=1
+        if (n==1):
+            print(ans_list_1)
+            return None
+        shift_1(l,j)
+        shift_2(l,j)
+        rotate_2(ans_list_1,j)
+        l = ans_list_1 # updating the value of l for each iterating of the loop
+        if(j!=n):
+            ans_list_1=[]
+        j+=1
+    print(ans_list_1) # printing the pattern
+
+
+l =[(1,1),(2,1),(2,2),(1,2)] # initiating a list l with the first 4 points of the pattern
+ans_list_1 = [] # creating an empty list to hold the pattern
+
+print("\n\n # Space Filling Curve # \n")
+n = int(input("Enter the number of rows :")) # taking the value of n from user 
+print("\n")
+SFC(n) #calling the SFC function 
+
+# ocean_51
+
+
 
 
