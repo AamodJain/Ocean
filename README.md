@@ -408,8 +408,59 @@ def find_max_2(l): # creating another function that does the same thing as find_
     return max(l)
 
 # ocean_43
+def stocks(filename): # creating a function to buy and sell stocks and calculate profits
+    import csv # importing csv module
+    with open(filename, 'r') as f:  # opening the file through filhandle f
+
+        fileReader = csv.reader(f) # creating a reader object to read the data from the file
+        dateList,priceList = [],[] # creating 2 empty lists to hold the dates and the corresponding day ending prices
+        balance = 100000 # creating a variable to hold the current balance
+        i = 0 # creating a variable i to hold the position where reading is happening in the file
+
+        for data in fileReader: # iterating through the data present in the file
+            if(i):
+                date = data[0] # storing the value of date
+                price = float(data[4]) # storing the value of share price
+                # appending these values in the designated lists
+                dateList.append(date)
+                priceList.append(price)
+
+            i+=1 # incrementing the value of i
+        maxPrice = (max(priceList)) # finding the max share price
+        minPrice = (min(priceList)) # finding the min share price
+        balance = balance%minPrice 
+        # finding the appropriate date for buying and selling of shares
+        buyDate = dateList[priceList.index(minPrice)]
+        sellDate = dateList[priceList.index(maxPrice)]
+        # printing the results
+        print('buy date = ',buyDate)
+        print('purchasing price =',minPrice)
+        print('sell date = ',sellDate)
+        print('selling price price =',maxPrice)
+        print('profit = ',(((maxPrice)*(100000//minPrice))+balance - 100000))
+
+stocks('sensexData.csv') # calling the function stocks
 
 # ocean_44
+import csv
+import matplotlib.pyplot as plt
+
+with open('HeightWeight.csv') as f:
+    fileReader = csv.reader(f)
+    i = 0
+    heightWeight = {}
+    for data in fileReader:
+        if i:
+            height = float(data[1])
+            weight = float(data[2])
+            heightWeight[height]= weight
+        else :
+            i+=1
+    heightWeight_sorted = {}
+    for i in sorted(heightWeight.keys()):
+        heightWeight_sorted[i]=heightWeight[i]
+    plt.plot(heightWeight_sorted.values(),heightWeight_sorted.keys())
+    plt.show()
 
 # ocean_45
 
