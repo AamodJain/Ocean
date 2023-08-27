@@ -442,27 +442,41 @@ def stocks(filename): # creating a function to buy and sell stocks and calculate
 stocks('sensexData.csv') # calling the function stocks
 
 # ocean_44
-import csv
-import matplotlib.pyplot as plt
+import csv # importing csv module
+import matplotlib.pyplot as plt # importing matplotlib.pyplot module as plt
 
-with open('HeightWeight.csv') as f:
-    fileReader = csv.reader(f)
-    i = 0
-    heightWeight = {}
-    for data in fileReader:
-        if i:
+with open('HeightWeight.csv') as f: # opening the file through filehandle f
+    fileReader = csv.reader(f) # creating a reader object 
+    i =  0 # creating a variable to store the position where reading is happening in the file 
+    heightWeight = {} # creating a dict. to store height:weight pairs
+    for data in fileReader: # iterating through the data present in the file
+        if i: # using this condition to avoid the first row of data (['serial number' , 'height' , 'weight'])
+            # extracting data from file 
             height = float(data[1])
             weight = float(data[2])
-            heightWeight[height]= weight
-        else :
-            i+=1
-    heightWeight_sorted = {}
+            heightWeight[height]= weight # updating the heightWeight dict.
+        i+=1 # incrementing the value of i
+        slope = [] # creating a list slope to store the slopes for each set of points  
+    heightWeight_sorted = {} # creating a new dict. to hold the data of heightWeight sorted according to height
     for i in sorted(heightWeight.keys()):
-        heightWeight_sorted[i]=heightWeight[i]
-    plt.plot(heightWeight_sorted.values(),heightWeight_sorted.keys())
-    plt.show()
+        heightWeight_sorted[i]=heightWeight[i] # updating heightWeight_sorted
+        slope.append(heightWeight_sorted[i]/i) #updating slope
+    avg_slope = sum(slope)/25000 # calculating the avg. value of slope for the entire set of data
+    plt.scatter(heightWeight_sorted.keys(),heightWeight_sorted.values(),color='g') # plotting the data points obtained 
+    plt.plot(heightWeight_sorted.keys(),[avg_slope*height for height in heightWeight_sorted.keys()],color='r') # plotting the line denoting the average of the ratio of weight/height
+    plt.scatter(heightWeight_sorted.keys(),slope,color = 'b')
+    # labeling the x and y axes
+    plt.xlabel('Height (in inches)')
+    plt.ylabel('Weight (in pounds)')
+    plt.show() # producing the graph as an output on the screen
+
+'''
+yes the data seems to be correlated . The correlation is that the ratio of weight to height (as depicted by the blue dots in the graph) is almost same for any height weight pair present in the data . Therfore we can plot a straight line (red line) having slope equal to the average of slopes for the entire set of data points. The green dots in the graph denote each (height,weight) pair from the data.  
+'''
+~     
 
 # ocean_45
+
 
 # ocean_46
 def matrixSum(): # creating a function to calculate the sum of the 2 matrices
