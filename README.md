@@ -630,6 +630,42 @@ print(BinarySearch(arr,key)) # calling the BinarySearch function
 # ocean_56
 
 # ocean_57
+# kadane's algorithm
+def maxSumSubarray_kadaneAlgo(l): # creating a functiton to find the maximum sum in an array by kadane's algorithm
+    max_sum = 0 # creating a variable to hold the max. sum 
+    current_sum = 0 # creating a variable to hold the current sum 
+    for x in l: # iterating through the list
+        current_sum = max(0, current_sum + x) # updating the current sum 
+        max_sum = max(max_sum, current_sum) # updating the max sum 
+    return max_sum # returning the max sum in the array
+
+l = eval(input("Enter a list of numbers : ")) # taking list from the user 
+print(maxSumSubarray_kadaneAlgo(l)) # printing the max sum
+
+# brute force method
+def maxSumSubarray(l): # creating a function maxSubarray to find the max sum , indices and the subarray
+    # creating variables to sub-array,max sum and indices 
+    max_subarr = [] 
+    max_sum = -2147483647
+    indices = ()
+    i,j = 0,0 # creating variables to hold the starting and ending index of the current substring 
+    n = len(l) # creating a variable to hold the length of l
+    # iterating through the string and finding the sum for each subarray
+    for i in range(n): 
+        for j in range(i+1,n):
+            # updating the value of max_sum,max_subarr and indices if sum of current subarray is greater than max_sum
+            if(sum(l[i:j])>max_sum): 
+                max_sum = sum(l[i:j])
+                max_subarr = l[i:j]
+                indices = (i,j-1)
+    
+    # printing the output 
+    print("required indexes = ",indices)
+    print("required sub-array = ",max_subarr)
+    print("max. sum = ",max_sum)
+
+l = eval(input("Enter a list of numbers : ")) # taking list from user 
+maxSumSubarray(l) # calling the maxSumSubarray function
 
 # ocean_58
 
