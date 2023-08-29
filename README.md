@@ -587,6 +587,20 @@ print("\n")
 SFC(n) #calling the SFC function 
 
 # ocean_51
+def bubbleSort(l): # creating a function to sort a list using bubble sort technique
+    n = len(l) # storing the length of l in n
+    swaps = True # creating a variable swaps which is True or False if number of swaps are greater than 0 or o respectively
+    while swaps: # iterating through the list again and again until the number of swaps becomes zero 
+        swaps = False # swaps is zero in the begining 
+        for i in range(n-1):
+            if l[i]>l[i+1]: # swapping l[i] and l[i+1] if they are arranged wrong
+                l[i],l[i+1]=l[i+1],l[i]
+                swaps = True # assigning True to swaps after any swap
+    return(l) # returning the sorted list 
+
+l = eval(input("Enter a list of numbers :")) # taking a list as an input form the user 
+print(bubbleSort(l)) # calling the bubbleSort function and printing the sorted list 
+
 # ocean_52
 # ocean_53
 # ocean_54
@@ -612,6 +626,38 @@ key = int(input('Enter the number you want to search in the array :'))
 print(BinarySearch(arr,key)) # calling the BinarySearch function
 
 # ocean_55
+
+# ocean_56
+
+# ocean_57
+
+# ocean_58
+
+# ocean_59
+import random # imorting random module 
+def caesarCipher(s): # creating a function to encrypt a string using caesar cipher
+    k = random.randint(1,26) # giving a random integer value to k
+    # creating 2 lists Ualpha and Lalpha to store the upper and lower case alphabets respectively
+    Ualpha = [chr(i) for i in range(65,91)]
+    Lalpha = [chr(i) for i in range(97,123)]
+    s_encrypted = '' # creating a variable s_encrypted to hold the encrypted string
+    for i in s: # iterating through the elements of s
+        if i.isupper(): # checking if i is uppercase or lowecase or none
+            index = Ualpha.index(i) # storing i's index
+            s_encrypted+= Ualpha[(index+k)%26] # adding the encrypted letter in place of i to the string s_encrypted
+        # repeating same thing for lowercase chr. too
+        elif i.islower():
+            index = Lalpha.index(i)
+            s_encrypted+= Lalpha[(index+k)%26]
+        else : # adding i to s_encrypted if i isn't an alphabet
+            s_encrypted+=i
+    return (s_encrypted) # returning the encryped string 
+
+
+s = input("Enter a string : ") # taking a string as input from the user 
+print(caesarCipher(s)) # printing the encrypted string 
+
+
 
 
 
