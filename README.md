@@ -637,6 +637,17 @@ mergeSort(l) # calling the mergeSort function on l
 print(l) # printing l after sorting 
 
 # ocean_53
+def quickSort(arr): # defining the function quickSort
+    if (len(arr)>1): # checking the base condition 
+        pivot = arr[-1] # selecting the last element of the arr as the pivot element 
+        left = [i for i in arr[:-1] if i<=pivot] # storing the elements smaller than the pivot element in a list named left
+        right = [i for i in arr[:-1] if i>pivot] # storing the elements greater than the pivot element in a list named right
+        return quickSort(left) + [pivot] + quickSort(right) # calling the quickSort function recursively to sort the entire list 
+    return arr # returning the same list if base condition isn't fulfilled 
+    
+l = eval(input("Enter a list of numbers : ")) # taking a list of numbers as input from the user 
+print(quickSort(l)) # calling the quickSort function on l
+
 # ocean_54
 # creating a function BinarySeach to search for an element in a sorted array 
 def BinarySearch(arr,key): 
