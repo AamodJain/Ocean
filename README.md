@@ -671,6 +671,98 @@ key = int(input('Enter the number you want to search in the array :'))
 print(BinarySearch(arr,key)) # calling the BinarySearch function
 
 # ocean_55
+# 
+import random
+
+def mergeSort(arr): # creating the function mergeSort to sort a list through merge sort method
+    if(len(arr)>1): # base condition - length of list > 1 (because list having single element is already sorted)
+        mid = len(arr)//2 # finding the middle index in the list to divide it in 2 halves
+        # assigning the two half lists to the variables left and right
+        left = arr[0:mid]
+        right = arr[mid:]
+        # calling mergeSort function on both half lists 
+        mergeSort(left)
+        mergeSort(right)
+        i,j,k = 0,0,0 # intiating i,j,k to hold the index of left , right where comparisons are happening and that of arr where it is being updated 
+        # merging two sorted lists left and right
+        while(i<len(left) and j<len(right)):
+            if(left[i]>right[j]): # compairing the elements of left and right 
+                arr[k]=right[j] # updating arr
+                j+=1 # incrementing j
+            else :
+                arr[k]=left[i] # updating arr
+                i+=1 # incrementing i
+            k+=1 # incrementing k
+        # updating remaining part of arr
+        while(i<len(left)):
+            arr[k]=left[i]
+            i+=1
+            k+=1
+        while(j<len(right)):
+            arr[k]=right[j]
+            j+=1
+            k+=1
+
+def quickSort(arr): # defining the function quickSort
+    if (len(arr)>1): # checking the base condition 
+        pivot = arr[-1] # selecting the last element of the arr as the pivot element 
+        left = [i for i in arr[:-1] if i<=pivot] # storing the elements smaller than the pivot element in a list named left
+        right = [i for i in arr[:-1] if i>pivot] # storing the elements greater than the pivot element in a list named right
+        return quickSort(left) + [pivot] + quickSort(right) # calling the quickSort function recursively to sort the entire list 
+    return arr
+
+def bubbleSort(l): # creating a function to sort a list using bubble sort technique
+    n = len(l) # storing the length of l in n
+    swaps = True # creating a variable swaps which is True or False if number of swaps are greater than 0 or o respectively
+    while swaps: # iterating through the list again and again until the number of swaps becomes zero 
+        swaps = False # swaps is zero in the begining 
+        for i in range(n-1):
+            if l[i]>l[i+1]: # swapping l[i] and l[i+1] if they are arranged wrong
+                l[i],l[i+1]=l[i+1],l[i]
+                swaps = True # assigning True to swaps after any swap
+    return(l) # returning the sorted list 
+
+f = open('text.txt')  # opening the file through file handle f
+data = f.read() # reading the entire file
+arr = data.split() # storing each word of the file in a list arr
+x = random.randint(1,3) # generating a random integer between 1-3 and then sorting the list using mergeSort/quickSort/bubbleSort technique
+if (x == 1):
+    mergeSort(arr)
+elif (x == 2):
+    arr = quickSort(arr)
+else :
+    bubbleSort(arr)
+f.close() # closing the file
+
+with open('text.txt','w') as f: # opening the file again in write mode to update the file
+    # writing the sorted arr into the file
+    for i in arr: 
+        f.write(i+'\n')
+# ocean_55_report 
+OCEAN 55 - REPORT 
+For this question , I wrote the code to sort a file containg 1 word per line by bubble sort , merge sort and quick sort techniques.
+
+BUBBLE SORT TECHNIQUE compares two adjacent elements of the list and swaps them if they are arranged in the wrong order .
+In the worst case i.e. when the list is sorted in reverse order , this method will have to make n*(n-2)/2 
+(or (n-1)+(n-2)+...+2+1 = n*(n-1)/2) comparisons where n is the length of the list . 
+Therefore the time complexity of bubble sort is O(n^2) .
+
+MERGE SORT TECHNIQUE divides the list in two subarrays (or two halves) recursively till the length of each subarray is 1(which can be done in log(n) steps).
+Then the algorithm merges or recombines these subarrays in sorted fashion till the entire sorted array in obtained (in the worst case , this will take n steps)
+Therefore the time complexity of merge sort is O(n*log(n)) 
+
+QUICK SORT TECHNIQUE - in this method , an element of the list is chosen as the pivot and then the list is partitioned about the pivot element i.e. all the elments smaller than the pivot element are placed before it (left) and the rest are placed after it (right) such than the list is divided in three parts , left-pivot-right
+This can take n steps to complete .
+Then the function calls itself recursively for the left and right part each time after partitioning the list until the length of left and right part becomes one (this can be done in log(n) steps).
+In the process the elements already get sorted after which they are just recombined to form the complete sorted list.
+Therefore the time complexity of quick sort is O(nlog(n)) but in the worst case(when n is very large), it can be O(n^2) because each time when left and right lists are declared , a lot of comparisons are being done.
+
+Thus we can conclude the following points :-
+1. bubble sort is always the slowest algorithm among the three .
+2. for smaller values of n , quick sort and merge sort almost take the same time to execute.
+3. for larger values of n , merge sort is faster than quick sort (which can also be inferred form its time complexity)
+
+Therefore MERGE SORT IS THE FASTEST among these three sorting algorithms.
 
 # ocean_56
 
