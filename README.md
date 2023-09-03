@@ -602,6 +602,40 @@ l = eval(input("Enter a list of numbers :")) # taking a list as an input form th
 print(bubbleSort(l)) # calling the bubbleSort function and printing the sorted list 
 
 # ocean_52
+def mergeSort(arr): # creating the function mergeSort to sort a list through merge sort method
+    if(len(arr)>1): # base condition - length of list > 1 (because list having single element is already sorted)
+        mid = len(arr)//2 # finding the middle index in the list to divide it in 2 halves
+        # assigning the two half lists to the variables left and right
+        left = arr[0:mid]
+        right = arr[mid:]
+        # calling mergeSort function on both half lists 
+        mergeSort(left)
+        mergeSort(right)
+        i,j,k = 0,0,0 # intiating i,j,k to hold the index of left , right where comparisons are happening and that of arr where it is being updated 
+        # merging two sorted lists left and right
+        while(i<len(left) and j<len(right)):
+            if(left[i]>right[j]): # compairing the elements of left and right 
+                arr[k]=right[j] # updating arr
+                j+=1 # incrementing j
+            else :
+                arr[k]=left[i] # updating arr
+                i+=1 # incrementing i
+            k+=1 # incrementing k
+        # updating remaining part of arr
+        while(i<len(left)):
+            arr[k]=left[i]
+            i+=1
+            k+=1
+        while(j<len(right)):
+            arr[k]=right[j]
+            j+=1
+            k+=1
+
+
+l = eval(input('Enter a list of numbers : ')) # taking a list as input from the user 
+mergeSort(l) # calling the mergeSort function on l
+print(l) # printing l after sorting 
+
 # ocean_53
 # ocean_54
 # creating a function BinarySeach to search for an element in a sorted array 
