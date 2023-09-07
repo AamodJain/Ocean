@@ -881,6 +881,53 @@ print(s)
 f.close()
 
 # Q6
+import string
+
+def textstrip(filename):
+    f = open(filename)
+    data = f.read()
+    s = ''
+    for i in data :
+        if i in string.ascii_lowercase:
+            s+=i
+    return(s)
+    f.close()
+
+def letter_distribution(s):
+    d = {}
+    for i in string.ascii_lowercase:
+        d[i]=0
+    for i in s:
+        d[i] += 1
+    return(d)
+
+def substitution_encrypt(s,d):
+    ans = ''
+    for i in s :
+        if i.isalpha():
+            ans+= d[i]
+        else :
+            ans += i
+    return ans
+
+def substitution_decrypt(s,d):
+    ans = ''
+    decrypt = {}
+    for i in d:
+        decrypt[d[i]] = i
+    for i in s:
+        if i.isalpha():
+            ans+= decrypt[i]
+        else :
+            ans += i
+    return ans
+
+def cryptanalyse_substitution(s):
+
+
+
+# s = textstrip('sherlock.txt')
+# print(letter_distribution(s))
 
 
 
