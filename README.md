@@ -765,6 +765,44 @@ Thus we can conclude the following points :-
 Therefore MERGE SORT IS THE FASTEST among these three sorting algorithms.
 
 # ocean_56
+def median(l):
+    n = len(l)
+    m = n//2
+    if(n%2==0):
+         medSum = 0
+         while(True):
+            x = l[-1]
+            left = [i for i in l[:-1] if i<x]
+            right = [i for i in l[:-1] if i>x]
+            if len(left)==m or len(left)==(m-1):
+                print('in 1')
+                medSum+=x
+            elif len(left)>m:
+                l = left 
+                print('in 2')
+            else :
+                l = right
+                m-= (len(left)+1)
+                print('in 3')
+    else :
+        while(True):
+            x = l[-1]
+            left = [i for i in l[:-1] if i<x]
+            right = [i for i in l[:-1] if i>x]
+            if len(left)==m:
+                print('in 1')
+                return(x)
+            elif len(left)>m:
+                l = left 
+                print('in 2')
+            else :
+                l = right
+                m-= (len(left)+1)
+                print('in 3')
+
+
+l = [1,5,4,3,6,7,2,9,10,8,11]
+print(median(l))
 
 # ocean_57
 # kadane's algorithm
