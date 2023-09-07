@@ -868,6 +868,21 @@ def caesarCipher(s): # creating a function to encrypt a string using caesar ciph
 s = input("Enter a string : ") # taking a string as input from the user 
 print(caesarCipher(s)) # printing the encrypted string 
 
+#ocean_60
+# Q5
+import string
+f = open('sherlock.txt')
+data = f.read()
+s = ''
+for i in data:
+    if i in string.ascii_letters:
+        s+=i
+print(s)
+f.close()
+
+# Q6
+
+
 
 
 
