@@ -1,4 +1,5 @@
 import string
+import time 
 
 def textstrip(filename):
     with open(filename) as f:
@@ -39,7 +40,7 @@ def substitution_decrypt(s,d):
     return ans
 
 def cryptanalyse_substitution(s):
-    freqOrderString = 'etaonrishdlfcmugypwbvkjxzq'
+    freqOrderString = 'etaoinfhrdlpcumwfybvkjxqzy'
     substitution = {}
     
     letterFreq = {}
@@ -91,6 +92,8 @@ def rotate_compare(s,r):
         if s[i]==s_rotated[i]:
             collisions+=1
     return (collisions/n)*100
+    
+    
 
 def cryptanalyse_vigenere_afterlength(s,k):
     password = ''
@@ -118,15 +121,23 @@ def cryptanalyse_vigenere_afterlength(s,k):
 
 
 s = textstrip('text.txt')
-# d = {'a':'t','t':'q','q':'w','w':'e','e':'s','s':'f','f':'g','g':'y','y':'u','u':'j','j':'k','k':'n','n':'m','m':'o','o':'p','p':'y','y':'d','d':'i','i':'h','h':'r','r':'z','z':'v','v':'c','c':'b','b':'l','l':'x','x':'a'}
+d = {'a':'t','t':'q','q':'w','w':'e','e':'s','s':'f','f':'g','g':'y','y':'u','u':'j','j':'k','k':'n','n':'m','m':'o','o':'p','p':'y','y':'d','d':'i','i':'h','h':'r','r':'z','z':'v','v':'c','c':'b','b':'l','l':'x','x':'a'}
 # print(len(d))
-#a = substitution_encrypt(s,d)
+a = substitution_encrypt(s,d)
 # print(cryptanalyse_substitution(s))
 # print('etaonrishdlfcmugypwbvkjxzq')
 #s = 'aamodjainisagoodboyhelikescodingandlisteningmusichedoesentlikecringethinsalsoheusedtolikeplayinchessalotandalsowatchinganimebutwhatcanbedonenowjeeadvancedhasreallytakenatollonhimmaybeandsohasiitrpar'
 p = 123
-a = (vigenere_encrypt(s,p))
+#a = (vigenere_encrypt(s,p))
 # print(a)
-print(cryptanalyse_vigenere_afterlength(a,3))
+#print(cryptanalyse_vigenere_afterlength(a,3))
+# print(rotate_compare(s,5))
 
+start = time.time()
+print(cryptanalyse_substitution(a))
+End = time.time()
+print('time taken :', End-start)
 
+#etaonrishdlfcmugypwbvkjxzq
+#etaoinsrhdlucmfywgpbvkxqjz
+#etaoinfhrdlpcumwfybvkjxqzy
