@@ -119,6 +119,40 @@ def cryptanalyse_vigenere_afterlength(s,k):
         password += str(abs(newIndex - 4))
     return password
 
+'''
+def cryptanalyse_vigenere_afterlength(s,k):
+    password = ''
+    l = ['' for i in range(k)]
+    for i in range(k):
+            print('hi')
+            j = 0
+            while (j*(k+i) < len(s)):
+                l[i]+=s[j*(k+i)]
+                j+=1
+    letters = [i for i in string.ascii_lowercase]
+    print(l)
+    for s in l:
+        letterFreq = {}
+        for i in string.ascii_lowercase:
+            letterFreq[i]=0
+        for i in s:
+            letterFreq[i] += 1
+    
+        list1 = list(letterFreq.values())
+        list2 = list(letterFreq.keys())
+        maxi = 0
+        maxi_index = 0
+        for i in range(26):
+            if list1[i]>maxi:
+                maxi = list1[i]
+                maxi_index = i
+        max_letter = list2[maxi_index]
+        newIndex = letters.index(max_letter)
+        print(letters[newIndex])
+        password += str(abs(newIndex - 4))
+    return password
+'''
+
 
 s = textstrip('text.txt')
 d = {'a':'t','t':'q','q':'w','w':'e','e':'s','s':'f','f':'g','g':'y','y':'u','u':'j','j':'k','k':'n','n':'m','m':'o','o':'p','p':'y','y':'d','d':'i','i':'h','h':'r','r':'z','z':'v','v':'c','c':'b','b':'l','l':'x','x':'a'}
