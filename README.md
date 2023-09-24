@@ -672,7 +672,7 @@ print(BinarySearch(arr,key)) # calling the BinarySearch function
 
 # ocean_55
 # 
-import random
+import time 
 
 def mergeSort(arr): # creating the function mergeSort to sort a list through merge sort method
     if(len(arr)>1): # base condition - length of list > 1 (because list having single element is already sorted)
@@ -709,7 +709,7 @@ def quickSort(arr): # defining the function quickSort
         left = [i for i in arr[:-1] if i<=pivot] # storing the elements smaller than the pivot element in a list named left
         right = [i for i in arr[:-1] if i>pivot] # storing the elements greater than the pivot element in a list named right
         return quickSort(left) + [pivot] + quickSort(right) # calling the quickSort function recursively to sort the entire list 
-    return arr
+    return arr # returning the same list if len<=1
 
 def bubbleSort(l): # creating a function to sort a list using bubble sort technique
     n = len(l) # storing the length of l in n
@@ -724,20 +724,35 @@ def bubbleSort(l): # creating a function to sort a list using bubble sort techni
 
 f = open('text.txt')  # opening the file through file handle f
 data = f.read() # reading the entire file
-arr = data.split() # storing each word of the file in a list arr
-x = random.randint(1,3) # generating a random integer between 1-3 and then sorting the list using mergeSort/quickSort/bubbleSort technique
-if (x == 1):
-    mergeSort(arr)
-elif (x == 2):
-    arr = quickSort(arr)
-else :
-    bubbleSort(arr)
+arr = []
+# storing each word of the file in a list arr
+arr = list(data.split())
+l1,l2,l3 = list(arr),list(arr),list(arr)
 f.close() # closing the file
 
+
+s1 = time.time()
+sorted_l1 = bubbleSort(l1)
+e1 = time.time()
+print(f'Time taken by bubble sort = {e1-s1}')
+
+s2 = time.time()
+sorted_l2 = quickSort(l1)
+e2 = time.time()
+print(f'Time taken by quick sort = {e2-s2}')
+
+s3 = time.time()
+mergeSort(l1)
+# sorted_l3 = l3
+e3 = time.time()
+print(f'Time taken by merge sort = {e3-s3}')
+
+arr = l1
 with open('text.txt','w') as f: # opening the file again in write mode to update the file
     # writing the sorted arr into the file
     for i in arr: 
         f.write(i+'\n')
+        
 # ocean_55_report 
 OCEAN 55 - REPORT 
 For this question , I wrote the code to sort a file containg 1 word per line by bubble sort , merge sort and quick sort techniques.
