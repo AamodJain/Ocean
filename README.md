@@ -859,6 +859,81 @@ maxSumSubarray(l) # calling the maxSumSubarray function
 
 # ocean_58
 
+# importing matplotlib module 
+import matplotlib.pyplot as plt
+
+# defining a function flipShift_y to flip and shift the curve along the y - axis
+def flipShift_y(l):
+    # iterating through the reversed list 
+    for i in l[::-1]:
+        # storing the x,y coordinates in x and y 
+        x,y = i
+        # appending the updated coordinates in arr,xlist and ylist after flipping the points
+        arr.append((x,k+(k-y)-1))
+        xlist.append(x)
+        ylist.append(k+(k-y)-1)
+    # storing the number of places to be shifted in a variable s
+    s =k*2
+    # iterating through l
+    for i in l:
+        # storing the x,y coordinates in x and y 
+        x,y = i
+        # appending the updated coordinates in arr,xlist and ylist after flipping the points
+        arr.append((x,s+y))
+        xlist.append(x)
+        ylist.append(s+y)
+
+# defining a function flipShift_x to flip and shift the curve along the x - axis
+def flipShift_x(l):
+    # iterating through the reversed list
+    for i in l[::-1]:
+        # storing the x,y coordinates in x and y 
+        x,y = i
+        # appending the updated coordinates in arr,xlist and ylist after flipping the points
+        arr.append((k+(k-x)-1,y))
+        xlist.append(k+(k-x)-1)
+        ylist.append(y)
+    # storing the number of places to be shifted in a variable s
+    s =k*2
+    for i in l:
+        # storing the x,y coordinates in x and y
+        x,y = i
+        # appending the updated coordinates in arr,xlist and ylist after flipping the points
+        arr.append((s+x,y))
+        xlist.append(s+x)
+        ylist.append(y)
+
+# taking n as input from the user
+n = int(input('Enter the value of n :'))
+
+# initializing l with the coordinates of the first four points
+l = [(0,0),(0,2),(1,2),(1,0),(2,0),(2,2)]
+
+#creating a list arr to hold the coordinates of all the points in the pattern
+arr = list(l)
+
+# creating xlist and ylist to hold the x and y coordinates of the points respectively
+xlist,ylist = [0,0,1,1,2,2],[0,2,2,0,0,2]
+
+# creating a variable k
+k = 3
+
+# calling flipShift functions recursively to produce the desired patterns
+for i in range(2, n+1):
+
+    flipShift_y(l)
+    l = list(arr)
+
+    flipShift_x(l)
+    l = list(arr)
+
+    # updating the val. of k
+    k*=3
+
+# plotting and showing the peano curve
+plt.plot(xlist,ylist)
+plt.show()
+
 # ocean_59
 import random # imorting random module 
 def caesarCipher(s): # creating a function to encrypt a string using caesar cipher
@@ -896,54 +971,217 @@ print(s)
 f.close()
 
 # Q6
-import string
+# importing time module
+import string 
 
+# defining textstrip function
 def textstrip(filename):
-    f = open(filename)
-    data = f.read()
-    s = ''
-    for i in data :
-        if i in string.ascii_lowercase:
-            s+=i
-    return(s)
-    f.close()
+    # opening file through filehandle f
+    with open(filename) as f:
+        data = f.read() # reading the data present in the file and storing it in a variable named 'data'
+        s = '' # creating an empty string to store the required string
+        # iterating through the data
+        for i in data :
+            if i in string.ascii_lowercase:
+                # adding the lowercase letters present in the file to s
+                s+=i 
+        # returning s
+        return(s) 
 
+# defining letter_distribution function
 def letter_distribution(s):
+    # creating an empty dict. to hold the letter distribution 
     d = {}
+    # initializing the freq. of each letter as 0
     for i in string.ascii_lowercase:
         d[i]=0
+    # iterating through the string s
     for i in s:
+        #updating the dictionary 'd'
         d[i] += 1
+    # returning d
     return(d)
 
+# defining substitution_encrypt function
 def substitution_encrypt(s,d):
+    # creating an empty string to hold the encrypted text 
     ans = ''
+    # iterating through the string s
     for i in s :
+        # checking if i is an alphabet
         if i.isalpha():
+            # updating ans
             ans+= d[i]
         else :
+            # updating ans with the same element if it is not an alphabet
             ans += i
+    # returning ans (encrypted text)
     return ans
 
+# defining substitution_decrypt function
 def substitution_decrypt(s,d):
+    # creating an empty string to hold the decrypted text 
     ans = ''
+    # creating a dict. decrypt to hold the reverse of the substitution used to encrypt the string
     decrypt = {}
+    # iterating through d
     for i in d:
+        # updating dict. decrypt
         decrypt[d[i]] = i
+    # iterating through s
     for i in s:
         if i.isalpha():
+            # updating ans with decrypted letters
             ans+= decrypt[i]
         else :
             ans += i
+    # returning ans
     return ans
 
+# defining cryptanalyse_substitution function
 def cryptanalyse_substitution(s):
+    # creating a string freqOrderString to hold the general frequency order of english alphabets
+    freqOrderString = 'etaoinfhrdlpcumwfybvkjxqzy'
+    # creating an empty dict. to hold the substitution used 
+    substitution = {}
+    # creating an dict. to hold the letters and their respective frequencies
+    letterFreq = letter_distribution(s)
+    # creating an empty dict. to hold the reverse key val. pairs of the dict. letterFreq
+    letterFreq_rev = {}
+    # iterating through letterFreq and updating letterFreq_rev
+    for i in letterFreq:
+        letterFreq_rev[letterFreq[i]] = i
+    # creating a list freq to hold the freq. of the letters
+    freq = list(letterFreq_rev.keys())
+    # sorting the list freq in descending order 
+    freq.sort(reverse=True)
+    # updating substitution dict. by comparing freqOrderString and the letterFreq_rev
+    for i in range(26):
+        substitution[freqOrderString[i]]=letterFreq_rev[freq[i]]
+    # returning substitution
+    return substitution
 
+# defining vigenere_encrypt function
+def vigenere_encrypt(s,password):
+    # creating a list to hold all the english alphabets
+    l = [i for i in string.ascii_lowercase]
+    # storing password as a string in a variable key
+    key = str(password)
+    # storing the length of pass. in n
+    n = len(key)
+    i = 0
+    # creating an empty string to hold the vignere encrypted string
+    s_encrypt = ''
+    # iterating through s
+    for j in s:
+        # checking some conditions and updating s_encrypt accordingly
+        if (i==n):
+            i = 0
+        s_encrypt += l[(l.index(j)+int(key[i]))%26]
+        i+=1
+    # returning s_encrypt
+    return s_encrypt
 
+# defining vigenere_decrypt function
+def vigenere_decrypt(s,password):
+    # creating a list to hold all the english alphabets
+    l = [i for i in string.ascii_lowercase]
+    # storing password as a string in a variable key
+    key = str(password)
+    # storing the length of pass. in n
+    n = len(key)
+    i = 0
+    # creating an empty string to hold the vignere decrypted string
+    s_decrypt = ''
+    # iterating through s
+    for j in s:
+        # checking some conditions and updating s_decrypt accordingly
+        if (i==n):
+            i = 0
+        s_decrypt += l[(l.index(j)-int(key[i]))%26]
+        i+=1
+    # returning s_decrypt
+    return s_decrypt
 
-# s = textstrip('sherlock.txt')
-# print(letter_distribution(s))
+# defining rotate_compare function
+def rotate_compare(s,r):
+    # storing the rotated string in s_rotated
+    s_rotated = s[r:]+s[:r]
+    # storing the length of s in n
+    n = len(s)
+    # creating a variable collisions to hold the number of collisions
+    collisions = 0
+    # iterating through s and updating collisions
+    for i in range(n):
+        if s[i]==s_rotated[i]:
+            collisions+=1
+    # returning the proportion of collisions
+    return (collisions/n)*100
+    
+# defining cryptanalyse_vigenere_afterlength function
+def cryptanalyse_vigenere_afterlength(s,k):
+    # creating an empty string to hold the password
+    password = ''
+    # initializing a list l with all elements as empty strings
+    l = ['' for i in range(k)]
+    # storing all the elements the encrypted string that were incremented by the same digit in the same poition (index) in l
+    for j in range(k):
+        for i in range(j,len(s),k):
+            l[j]+=s[i]
+    # creating a dict. letters to hold the english alphabets
+    letters = [i for i in string.ascii_lowercase]
+    # iterating through l
+    for a in l:
+        letterFreq = letter_distribution(a)
+        # storing the keys and values of letterFreq in two separate lists
+        list1 = list(letterFreq.values())
+        list2 = list(letterFreq.keys())
+        # initiating maxi and maxi_index as 0 which will later hold the max. freq. and the index of the letter having max. freq. respectively 
+        maxi = 0
+        maxi_index = 0
+        # iterating through list1 and updating maxi and maxi_index 
+        for i in range(26):
+            if list1[i]>maxi:
+                maxi = list1[i]
+                maxi_index = i
+        # storing the max. freq. letter in max_letter 
+        max_letter = list2[maxi_index]
+        # storing the actual pos. of max_letter among the alphabets in newIndex
+        newIndex = letters.index(max_letter)
+        # updating password
+        password += str(abs(newIndex - 4))
+    # returning password
+    return password
 
+# defining cryptanalyse_vigenere_findlength function
+def cryptanalyse_vigenere_findlength(s):
+    # creating a variable collFreq to hold the proportion of collisions after rotating the list by some places
+    collFreq = 0
+    # storing the number of places rotated in n
+    n = 0
+    # if collFreq exceeds 6 after rotating s by n places , then n will be the length of the password
+    while(collFreq<=6):
+        # incrementing n
+        n+=1
+        # updating collFreq
+        collFreq = rotate_compare(s,n)
+    # returning n
+    return n
+
+# defining cryptanalyse_vigenere function
+def cryptanalyse_vigenere(s):
+
+    # finding the length of the pass. and then storing it in passLen
+    passLen = cryptanalyse_vigenere_findlength(s)
+
+    # finding the password used to vegnere encrypyt s and storing it in password
+    password = cryptanalyse_vigenere_afterlength(s,passLen)
+    
+    # decrypting s to find the actual text and storing it in plainText
+    plainText = vigenere_decrypt(s,password)
+    
+    # printing the password and the plainText
+    print(f'decrypted text : {plainText}\npassword : {password}')
 
 
 
